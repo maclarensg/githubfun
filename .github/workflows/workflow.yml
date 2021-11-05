@@ -43,3 +43,7 @@ jobs:
 
       - name: Check the output from My action
         run: echo "::set-output name=action_fruit::strawberry"
+
+      - uses: gr2m/hello-world-js-action@v1.0.4
+        with:
+          greeting: Gavin
