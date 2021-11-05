@@ -41,17 +41,17 @@ jobs:
       #   with:
       #     some_input: 'MyOutputRML'
 
-      - name: Check the output from My action
-        run: find .
-      
       - name: Set the value
         id: step_one
         run: |
-          echo "action_state=$(find .)" >> $GITHUB_ENV
+          echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
+          curl https://httpbin.org/json >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+      
 
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: 1
           body: |
-            ${{ env.action_state }}
+            ${{ env.JSON_RESPONSE }}
