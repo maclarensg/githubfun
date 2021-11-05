@@ -54,4 +54,4 @@ jobs:
         with:
           issue-number: 1
           body: |
-            "${{ env.action_state }}" 
+            ${{ env.action_state }}
